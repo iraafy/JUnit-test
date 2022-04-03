@@ -13,17 +13,26 @@ public class SistemBank {
     }
 
     void Deposit(float jumlah) {
-        saldo += jumlah;
-        System.out.println("Deposit: $" + jumlah);
+        if (jumlah <= 500) {
+            saldo += jumlah;
+            System.out.println("Deposit: $" + jumlah);
+        } else {
+            System.out.println("Deposit telah mencapai batas maksimum.");   
+        }
     }
 
     void TarikTunai(float jumlah) {
-        if (saldo <= jumlah) {
-            System.out.println("Tarik Tunai Gagal, Saldo Tidak Mencukupi.");
+        if (jumlah <= 100) {
+            if (saldo <= jumlah) {
+                System.out.println("Tarik Tunai Gagal, Saldo Tidak Mencukupi.");
+            } else {
+                saldo -= jumlah;
+                System.out.println("Tarik Tunai $" + jumlah + " Berhasil");
+            }
         } else {
-            saldo -= jumlah;
-            System.out.println("Tarik Tunai $" + jumlah + " Berhasil");
+            System.out.println("Tarik tunai telah mencapai batas maksimum."); 
         }
+        
     }
 
     void display() {
@@ -39,7 +48,7 @@ public class SistemBank {
             s.Deposit(10);
             s.display();
         } else if (inputUser == 2) {
-            s.TarikTunai(5);
+            s.TarikTunai(100);
             s.display();
         }
         else {

@@ -10,7 +10,6 @@ public class SistemBankTest {
         b.Deposit(7);
 
         Float expectedResult = 62f;
-
         assertEquals((Float) expectedResult, (Float) b.saldo);
     }
 
